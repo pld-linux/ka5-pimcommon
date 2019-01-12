@@ -1,14 +1,14 @@
-%define		kdeappsver	18.12.0
+%define		kdeappsver	18.12.1
 %define		qtver		5.9.0
 %define		kaname		pimcommon
 Summary:	Common PIM libraries
 Name:		ka5-%{kaname}
-Version:	18.12.0
+Version:	18.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	c9fc75c61a8b1f5376eda052ae0e71d5
+# Source0-md5:	bfddb74f7d5f214ca870ca04acd890a4
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -23,13 +23,13 @@ BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
 BuildRequires:	grantlee-qt5-devel >= 5.1
-BuildRequires:	ka5-akonadi-contacts-devel >= 18.12.0
-BuildRequires:	ka5-akonadi-devel >= 18.12.0
-BuildRequires:	ka5-kcontacts-devel >= 18.12.0
-BuildRequires:	ka5-kimap-devel >= 18.12.0
-BuildRequires:	ka5-kmime-devel >= 18.12.0
-BuildRequires:	ka5-kpimtextedit-devel >= 18.12.0
-BuildRequires:	ka5-libkdepim-devel >= 18.12.0
+BuildRequires:	ka5-akonadi-contacts-devel >= %{kdeappsver}
+BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
+BuildRequires:	ka5-kcontacts-devel >= %{kdeappsver}
+BuildRequires:	ka5-kimap-devel >= %{kdeappsver}
+BuildRequires:	ka5-kmime-devel >= %{kdeappsver}
+BuildRequires:	ka5-kpimtextedit-devel >= %{kdeappsver}
+BuildRequires:	ka5-libkdepim-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
 BuildRequires:	kf5-karchive-devel >= 5.51.0
 BuildRequires:	kf5-kcodecs-devel >= 5.51.0
