@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		pimcommon
 Summary:	Common PIM libraries
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	4bd4c9e0faa27a2c3a38ccbba3667ffc
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	ec86c20c6d2c152355ffb00099090ca9
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -26,7 +26,6 @@ BuildRequires:	gettext-devel
 BuildRequires:	grantlee-qt5-devel >= 5.1
 BuildRequires:	ka5-akonadi-contacts-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
-BuildRequires:	ka5-kcontacts-devel >= %{kdeappsver}
 BuildRequires:	ka5-kimap-devel >= %{kdeappsver}
 BuildRequires:	ka5-kmime-devel >= %{kdeappsver}
 BuildRequires:	ka5-kpimtextedit-devel >= %{kdeappsver}
@@ -37,6 +36,7 @@ BuildRequires:	kf5-kcodecs-devel >= %{kframever}
 BuildRequires:	kf5-kcompletion-devel >= %{kframever}
 BuildRequires:	kf5-kconfig-devel >= %{kframever}
 BuildRequires:	kf5-kconfigwidgets-devel >= %{kframever}
+BuildRequires:	kf5-kcontacts-devel >= %{kframever}
 BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
 BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
 BuildRequires:	kf5-kdesignerplugin-devel >= %{kframever}
@@ -99,13 +99,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/pimcommon.categories
-/etc/xdg/pimcommon.renamecategories
 %attr(755,root,root) %ghost %{_libdir}/libKF5PimCommon.so.5
 %attr(755,root,root) %{_libdir}/libKF5PimCommon.so.5.*.*
 %attr(755,root,root) %ghost %{_libdir}/libKF5PimCommonAkonadi.so.5
 %attr(755,root,root) %{_libdir}/libKF5PimCommonAkonadi.so.5.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/designer/pimcommonwidgets.so
+%{_datadir}/qlogging-categories5/pimcommon.categories
+%{_datadir}/qlogging-categories5/pimcommon.renamecategories
+%attr(755,root,root) %{_libdir}/qt5/plugins/designer/pimcommoniakonadiwidgets.so
 
 %files devel
 %defattr(644,root,root,755)
