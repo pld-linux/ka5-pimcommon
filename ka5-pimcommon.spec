@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.0
+%define		kdeappsver	22.12.1
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		pimcommon
 Summary:	Common PIM libraries
 Name:		ka5-%{kaname}
-Version:	22.12.0
-Release:	2
+Version:	22.12.1
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	858b61fdaf687457fe86e424758afe5b
+# Source0-md5:	7e119de47569f40b4cda6c372df4b0b7
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
