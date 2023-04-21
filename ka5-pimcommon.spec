@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		pimcommon
 Summary:	Common PIM libraries
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	3
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	8e7830ad2b65ed5b2c736f6a2b2fb96f
+# Source0-md5:	0979d313d15cb5e4a68170d8d0bc16b3
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -53,6 +53,7 @@ BuildRequires:	kf5-kservice-devel >= %{kframever}
 BuildRequires:	kf5-kwidgetsaddons-devel >= %{kframever}
 BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
 BuildRequires:	kf5-purpose-devel >= %{kframever}
+BuildRequires:	ktextaddons-devel
 BuildRequires:	libxslt-progs
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
@@ -112,28 +113,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%ghost %{_libdir}/libKF5PimCommon.so.5
-%{_libdir}/libKF5PimCommon.so.5.*.*
-%ghost %{_libdir}/libKF5PimCommonAkonadi.so.5
-%{_libdir}/libKF5PimCommonAkonadi.so.5.*.*
-%ghost %{_libdir}/libKF5PimCommonAutoCorrection.so.5
-%{_libdir}/libKF5PimCommonAutoCorrection.so.5.*.*
-%{_libdir}/qt5/plugins/designer/pimcommonwidgets.so
-%{_libdir}/qt5/plugins/designer/pimcommonakonadiwidgets.so
 %{_datadir}/qlogging-categories5/pimcommon.categories
 %{_datadir}/qlogging-categories5/pimcommon.renamecategories
+%ghost %{_libdir}/libKF5PimCommon.so.5
+%attr(755,root,root) %{_libdir}/libKF5PimCommon.so.*.*.*
+%ghost %{_libdir}/libKF5PimCommonAkonadi.so.5
+%attr(755,root,root) %{_libdir}/libKF5PimCommonAkonadi.so.*.*.*
+%attr(755,root,root) %{_libdir}/qt5/plugins/designer/pimcommon5akonadiwidgets.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/designer/pimcommon5widgets.so
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF5/PimCommon
-%{_includedir}/KF5/PimCommonAkonadi
-%{_includedir}/KF5/PimCommonAutoCorrection
-%{_libdir}/cmake/KF5PimCommon
-%{_libdir}/cmake/KF5PimCommonAkonadi
-%{_libdir}/cmake/KF5PimCommonAutoCorrection
-%{_libdir}/libKF5PimCommon.so
-%{_libdir}/libKF5PimCommonAkonadi.so
-%{_libdir}/libKF5PimCommonAutoCorrection.so
 %{_libdir}/qt5/mkspecs/modules/qt_PimCommon.pri
 %{_libdir}/qt5/mkspecs/modules/qt_PimCommonAkonadi.pri
-%{_libdir}/qt5/mkspecs/modules/qt_PimCommonAutoCorrection.pri
+%{_includedir}/KF5/PimCommon
+%{_includedir}/KF5/PimCommonAkonadi
+%{_libdir}/cmake/KF5PimCommon
+%{_libdir}/cmake/KF5PimCommonAkonadi
+%{_libdir}/libKF5PimCommon.so
+%{_libdir}/libKF5PimCommonAkonadi.so
