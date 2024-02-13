@@ -1,29 +1,29 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.4
+%define		kdeappsver	24.01.95
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		pimcommon
 Summary:	Common PIM libraries
 Name:		ka5-%{kaname}
-Version:	23.08.4
-Release:	1
+Version:	24.01.95
+Release:	0.1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	d1734f70c158f91b9f094b3a46f121f4
+Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	965fc1df2de48700ffedec32255a73f2
 URL:		http://www.kde.org/
-BuildRequires:	Qt5Core-devel >= %{qtver}
-BuildRequires:	Qt5DBus-devel
-BuildRequires:	Qt5Designer-devel
-BuildRequires:	Qt5Gui-devel
-BuildRequires:	Qt5Network-devel
-BuildRequires:	Qt5PrintSupport-devel
-BuildRequires:	Qt5Test-devel
-BuildRequires:	Qt5UiTools-devel >= 5.11.1
-BuildRequires:	Qt5Widgets-devel
-BuildRequires:	Qt5Xml-devel
+BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt6DBus-devel
+BuildRequires:	Qt6Designer-devel
+BuildRequires:	Qt6Gui-devel
+BuildRequires:	Qt6Network-devel
+BuildRequires:	Qt6PrintSupport-devel
+BuildRequires:	Qt6Test-devel
+BuildRequires:	Qt6UiTools-devel >= 5.11.1
+BuildRequires:	Qt6Widgets-devel
+BuildRequires:	Qt6Xml-devel
 BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
 BuildRequires:	grantlee-qt5-devel >= 5.1
@@ -33,30 +33,29 @@ BuildRequires:	ka5-kimap-devel >= %{kdeappsver}
 BuildRequires:	ka5-kmime-devel >= %{kdeappsver}
 BuildRequires:	ka5-kpimtextedit-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkdepim-devel >= %{kdeappsver}
-BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf5-karchive-devel >= %{kframever}
-BuildRequires:	kf5-kcodecs-devel >= %{kframever}
-BuildRequires:	kf5-kcompletion-devel >= %{kframever}
-BuildRequires:	kf5-kconfig-devel >= %{kframever}
-BuildRequires:	kf5-kconfigwidgets-devel >= %{kframever}
-BuildRequires:	kf5-kcontacts-devel >= %{kframever}
-BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
-BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
-BuildRequires:	kf5-kdesignerplugin-devel >= %{kframever}
-BuildRequires:	kf5-ki18n-devel >= %{kframever}
-BuildRequires:	kf5-kiconthemes-devel >= %{kframever}
-BuildRequires:	kf5-kio-devel >= %{kframever}
-BuildRequires:	kf5-kitemmodels-devel >= %{kframever}
-BuildRequires:	kf5-kjobwidgets-devel >= %{kframever}
-BuildRequires:	kf5-knewstuff-devel >= %{kframever}
-BuildRequires:	kf5-kservice-devel >= %{kframever}
-BuildRequires:	kf5-kwidgetsaddons-devel >= %{kframever}
-BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
-BuildRequires:	kf5-purpose-devel >= %{kframever}
+BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf6-karchive-devel >= %{kframever}
+BuildRequires:	kf6-kcodecs-devel >= %{kframever}
+BuildRequires:	kf6-kcompletion-devel >= %{kframever}
+BuildRequires:	kf6-kconfig-devel >= %{kframever}
+BuildRequires:	kf6-kconfigwidgets-devel >= %{kframever}
+BuildRequires:	kf6-kcontacts-devel >= %{kframever}
+BuildRequires:	kf6-kcoreaddons-devel >= %{kframever}
+BuildRequires:	kf6-kdbusaddons-devel >= %{kframever}
+BuildRequires:	kf6-ki18n-devel >= %{kframever}
+BuildRequires:	kf6-kiconthemes-devel >= %{kframever}
+BuildRequires:	kf6-kio-devel >= %{kframever}
+BuildRequires:	kf6-kitemmodels-devel >= %{kframever}
+BuildRequires:	kf6-kjobwidgets-devel >= %{kframever}
+BuildRequires:	kf6-knewstuff-devel >= %{kframever}
+BuildRequires:	kf6-kservice-devel >= %{kframever}
+BuildRequires:	kf6-kwidgetsaddons-devel >= %{kframever}
+BuildRequires:	kf6-kxmlgui-devel >= %{kframever}
+BuildRequires:	kf6-purpose-devel >= %{kframever}
 BuildRequires:	ktextaddons-devel
 BuildRequires:	libxslt-progs
 BuildRequires:	ninja
-BuildRequires:	qt5-build >= %{qtver}
+BuildRequires:	qt6-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -111,22 +110,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%{_datadir}/qlogging-categories5/pimcommon.categories
-%{_datadir}/qlogging-categories5/pimcommon.renamecategories
-%attr(755,root,root) %{_libdir}/qt5/plugins/designer/pimcommon5akonadiwidgets.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/designer/pimcommon5widgets.so
-%ghost %{_libdir}/libKPim5PimCommon.so.5
-%attr(755,root,root) %{_libdir}/libKPim5PimCommon.so.5.*.*
-%ghost %{_libdir}/libKPim5PimCommonAkonadi.so.5
-%attr(755,root,root) %{_libdir}/libKPim5PimCommonAkonadi.so.5.*.*
+%attr(755,root,root) %{_libdir}/libKPim6PimCommon.so.*.*
+%ghost %{_libdir}/libKPim6PimCommon.so.6
+%attr(755,root,root) %{_libdir}/libKPim6PimCommonAkonadi.so.*.*
+%ghost %{_libdir}/libKPim6PimCommonAkonadi.so.6
+%attr(755,root,root) %{_libdir}/qt6/plugins/designer/pimcommon6akonadiwidgets.so
+%attr(755,root,root) %{_libdir}/qt6/plugins/designer/pimcommon6widgets.so
+%{_datadir}/qlogging-categories6/pimcommon.categories
+%{_datadir}/qlogging-categories6/pimcommon.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/qt5/mkspecs/modules/qt_PimCommon.pri
-%{_libdir}/qt5/mkspecs/modules/qt_PimCommonAkonadi.pri
-%{_includedir}/KPim5/PimCommon
-%{_includedir}/KPim5/PimCommonAkonadi
-%{_libdir}/cmake/KPim5PimCommon
-%{_libdir}/cmake/KPim5PimCommonAkonadi
-%{_libdir}/libKPim5PimCommon.so
-%{_libdir}/libKPim5PimCommonAkonadi.so
+%{_includedir}/KPim6/PimCommon
+%{_includedir}/KPim6/PimCommonAkonadi
+%{_libdir}/cmake/KPim6PimCommon
+%{_libdir}/cmake/KPim6PimCommonAkonadi
+%{_libdir}/libKPim6PimCommon.so
+%{_libdir}/libKPim6PimCommonAkonadi.so
