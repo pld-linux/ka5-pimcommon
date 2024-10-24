@@ -1,11 +1,13 @@
 #
 # Conditional build:
-%bcond_with	tests		# build with tests
+%bcond_with	tests		# test suite
+
 %define		kdeappsver	23.08.5
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		pimcommon
 Summary:	Common PIM libraries
+Summary(pl.UTF-8):	Wspólne biblioteki PIM
 Name:		ka5-%{kaname}
 Version:	23.08.5
 Release:	1
@@ -13,7 +15,7 @@ License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
 # Source0-md5:	1fc440ae9f505f70392ac3c8749b134a
-URL:		http://www.kde.org/
+URL:		https://kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
 BuildRequires:	Qt5Designer-devel
@@ -90,15 +92,16 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+
 %ninja_build -C build
 
 %if %{with tests}
 ctest --test-dir build
 %endif
 
-
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %ninja_install -C build
 
 %find_lang %{kaname} --all-name --with-kde
@@ -111,22 +114,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%{_datadir}/qlogging-categories5/pimcommon.categories
-%{_datadir}/qlogging-categories5/pimcommon.renamecategories
+%attr(755,root,root) %{_libdir}/libKPim5PimCommon.so.5.*.*
+%ghost %{_libdir}/libKPim5PimCommon.so.5
+%attr(755,root,root) %{_libdir}/libKPim5PimCommonAkonadi.so.5.*.*
+%ghost %{_libdir}/libKPim5PimCommonAkonadi.so.5
 %attr(755,root,root) %{_libdir}/qt5/plugins/designer/pimcommon5akonadiwidgets.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/designer/pimcommon5widgets.so
-%ghost %{_libdir}/libKPim5PimCommon.so.5
-%attr(755,root,root) %{_libdir}/libKPim5PimCommon.so.5.*.*
-%ghost %{_libdir}/libKPim5PimCommonAkonadi.so.5
-%attr(755,root,root) %{_libdir}/libKPim5PimCommonAkonadi.so.5.*.*
+%{_datadir}/qlogging-categories5/pimcommon.categories
+%{_datadir}/qlogging-categories5/pimcommon.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/qt5/mkspecs/modules/qt_PimCommon.pri
-%{_libdir}/qt5/mkspecs/modules/qt_PimCommonAkonadi.pri
+%{_libdir}/libKPim5PimCommon.so
+%{_libdir}/libKPim5PimCommonAkonadi.so
 %{_includedir}/KPim5/PimCommon
 %{_includedir}/KPim5/PimCommonAkonadi
 %{_libdir}/cmake/KPim5PimCommon
 %{_libdir}/cmake/KPim5PimCommonAkonadi
-%{_libdir}/libKPim5PimCommon.so
-%{_libdir}/libKPim5PimCommonAkonadi.so
+%{_libdir}/qt5/mkspecs/modules/qt_PimCommon.pri
+%{_libdir}/qt5/mkspecs/modules/qt_PimCommonAkonadi.pri
