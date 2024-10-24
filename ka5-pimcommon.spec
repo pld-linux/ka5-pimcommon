@@ -51,11 +51,11 @@ BuildRequires:	kf5-kio-devel >= %{kframever}
 BuildRequires:	kf5-kitemmodels-devel >= %{kframever}
 BuildRequires:	kf5-kjobwidgets-devel >= %{kframever}
 BuildRequires:	kf5-knewstuff-devel >= %{kframever}
+BuildRequires:	kf5-ktextaddons-devel
 BuildRequires:	kf5-kservice-devel >= %{kframever}
 BuildRequires:	kf5-kwidgetsaddons-devel >= %{kframever}
 BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
 BuildRequires:	kf5-purpose-devel >= %{kframever}
-BuildRequires:	ktextaddons-devel
 BuildRequires:	libxslt-progs
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
