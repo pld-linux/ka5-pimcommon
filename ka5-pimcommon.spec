@@ -59,7 +59,7 @@ BuildRequires:	kf5-purpose-devel >= %{kframever}
 BuildRequires:	libxslt-progs
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
-BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
